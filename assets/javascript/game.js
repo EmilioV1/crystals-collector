@@ -33,3 +33,10 @@
 
 // * Each crystal should have a random hidden value between 1 - 12.
 
+// Gloabl Variables
+var wins = 0;
+var losses = 0;
+var points = 0;
+var crystals;
+var randomNum;
+
