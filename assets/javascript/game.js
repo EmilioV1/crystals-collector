@@ -78,5 +78,19 @@ var game = {
         randomNum = this.randomNumGen();
         $(".random-number").text(randomNum);
     },
-
+    // Updates HTML
+    updateHtml: function(win){
+        // Updates win area with win or loss message
+        $(".win-area").empty()
+        if(win === true){
+            $(".win-area").append("<p>").text("You win!");
+        }
+        else if(win === false){
+            $(".win-area").append("<p>").text("you lose!");
+        }
+        $("#wins").text(wins);
+        $("#losses").text(losses);
+    },
 }
+
+game.updateHtml();
