@@ -46,4 +46,30 @@ var game = {
     randomNumGen: function(){
         return Math.floor(Math.random() * 102) + 19;
     },
+    // Generate random value for each crystal and pops image
+    randomNumCrystal: function(){
+        return {
+            one:{
+                crystalValue: Math.floor(Math.random() * 12) + 1,
+
+                imageUrl: "assets/images/one.png"
+            },
+            two:{
+                crystalValue: Math.floor(Math.random() * 12) + 1,
+
+                imageUrl: "assets/images/two.png"
+            },
+            three:{
+                crystalValue: Math.floor(Math.random() * 12) + 1,
+
+                imageUrl: "assets/images/three.png"
+            },
+            four:{
+                crystalValue: Math.floor(Math.random() * 12) + 1,
+
+                imageUrl: "assets/images/four.png"
+            },
+        }
+    },
+    
 }
