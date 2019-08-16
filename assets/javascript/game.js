@@ -71,5 +71,12 @@ var game = {
             },
         }
     },
-    
+    // Resets game
+    reset: function(){
+        points = 0;
+        crystals = this.randomNumCrystal();
+        randomNum = this.randomNumGen();
+        $(".random-number").text(randomNum);
+    },
+
 }
