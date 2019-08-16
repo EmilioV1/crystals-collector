@@ -40,3 +40,10 @@ var points = 0;
 var crystals;
 var randomNum;
 
+// Game Object
+var game = {
+    // Generates random objective number
+    randomNumGen: function(){
+        return Math.floor(Math.random() * 102) + 19;
+    },
+}
