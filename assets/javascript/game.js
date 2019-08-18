@@ -1,96 +1,79 @@
-// ### Option One: CrystalsCollector Game (Recommended)
+// Launches code once DOM has loaded
+$(document).ready(function() {
 
-// ![Crystal Collector](Images/1-CrystalCollector.jpg)
+    // Starting variables
+    var wins = 0;
+    var losses = 0;
+    var crystals;
 
-// 1. [Watch the demo](https://youtu.be/yNI0l2FMeCk).
+    // Total points 
+    var points = 0;
 
-// 2. The player will have to guess the answer, just like in Word Guess. This time, though, the player will guess with numbers instead of letters. 
+    // Target number
+    var randomNum = randomNumGen();
 
-// 3. Here's how the app works:
-
-//    * There will be four crystals displayed as buttons on the page.
-
-//    * The player will be shown a random number at the start of the game.
-
-//    * When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
-
-//      * Your game will hide this amount until the player clicks a crystal.
-//      * When they do click one, update the player's score counter.
-
-//    * The player wins if their total score matches the random number from the beginning of the game.
-
-//    * The player loses if their score goes above the random number.
-
-//    * The game restarts whenever the player wins or loses.
-
-//      * When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
-
-//    * The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
-
-// ##### Option 1 Game design notes
-
-// * The random number shown at the start of the game should be between 19 - 120.
-
-// * Each crystal should have a random hidden value between 1 - 12.
-
-// Gloabl Variables
-var wins = 0;
-var losses = 0;
-var points = 0;
-var crystals;
-var randomNum;
-
-// Game Object
-var game = {
     // Generates random objective number
-    randomNumGen: function(){
+    function randomNumGen(){
         return Math.floor(Math.random() * 102) + 19;
-    },
+    };
+
     // Generate random value for each crystal and pops image
-    randomNumCrystal: function(){
+    function randomNumCrystals(){
         return {
             one:{
                 crystalValue: Math.floor(Math.random() * 12) + 1,
-
                 imageUrl: "assets/images/one.png"
             },
             two:{
                 crystalValue: Math.floor(Math.random() * 12) + 1,
-
                 imageUrl: "assets/images/two.png"
             },
             three:{
                 crystalValue: Math.floor(Math.random() * 12) + 1,
-
                 imageUrl: "assets/images/three.png"
             },
             four:{
                 crystalValue: Math.floor(Math.random() * 12) + 1,
-
                 imageUrl: "assets/images/four.png"
             },
-        }
-    },
+        };
+    }
+
     // Resets game
-    reset: function(){
+    function reset(){
         points = 0;
-        crystals = this.randomNumCrystal();
-        randomNum = this.randomNumGen();
+        crystals = randomNumCrystal();
+        randomNum = randomNumGen();
         $(".random-number").text(randomNum);
-    },
+    }
     // Updates HTML
-    updateHtml: function(win){
+    function updateHtml(win){
         // Updates win area with win or loss message
         $(".win-area").empty()
+        // If user wins
         if(win === true){
-            $(".win-area").append("<p>").text("You win!");
+            $(".win-area").append($("<p>").text("You win!"));
+            reset();
+            renderMatchingNumber();
         }
+        // If user loses
         else if(win === false){
             $(".win-area").append("<p>").text("you lose!");
+            reset();
+            renderMatchingNumber();
         }
-        $("#wins").text(wins);
-        $("#losses").text(losses);
-    },
-}
 
-game.updateHtml();
+        // Appends scoreboard to the page
+        var wSpan = $("<span>").text(wins);
+        var lSpan = $("<span>").text(losses);
+
+        var pWins = $("<p>").text("Wins: ");
+        var pLosses = $("<p>").text("Losses: ");
+
+        pWins.append(wSpan);
+        pLosses.append(lSpan);
+
+        $("#win-area").append(pWins);
+        $("#win-area").append(pLosses);
+    }
+});
