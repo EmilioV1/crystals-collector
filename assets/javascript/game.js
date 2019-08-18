@@ -54,7 +54,7 @@ $(document).ready(function() {
         if(win === true){
             $(".win-area").append($("<p>").text("You win!"));
             reset();
-            renderMatchingNumber();
+            popMatchingNumber();
         }
         // If user loses
         else if(win === false){
@@ -93,9 +93,18 @@ $(document).ready(function() {
     }
 
     // Function that pops current points to the page
-    function renderMatchingNumber(crystal){
+    function popMatchingNumber(crystal){
         var scoreNumDiv = $("<div id = 'score-number'>").text(yourMatchingNumber);
         $("#score-area").html();
         $("#score-area").html(scoreNumDiv);
     }
+
+    // Calling functions to start game
+    reset();
+    updateHtml();
+    popCrystals();
+    popMatchingNumber();
+
+    
+    
 });
