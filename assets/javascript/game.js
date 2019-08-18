@@ -86,6 +86,16 @@ $(document).ready(function() {
             $("#crystal-area").append(crystalDiv);
         }
     }
+    // Function to update total points as crystals are clicked
+    function updateMatchingNumber(crystal){
+        // Updates the point total based on which crystal was clicked
+        yourMatchingNumber += crystals[crystal.attr("data-name")].points;
+    }
 
-    
+    // Function that pops current points to the page
+    function renderMatchingNumber(crystal){
+        var scoreNumDiv = $("<div id = 'score-number'>").text(yourMatchingNumber);
+        $("#score-area").html();
+        $("#score-area").html(scoreNumDiv);
+    }
 });
