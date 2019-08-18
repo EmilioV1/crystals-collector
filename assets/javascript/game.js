@@ -87,14 +87,14 @@ $(document).ready(function() {
         }
     }
     // Function to update total points as crystals are clicked
-    function updateMatchingNumber(crystal){
+    function updatePoints(crystal){
         // Updates the point total based on which crystal was clicked
-        yourMatchingNumber += crystals[crystal.attr("data-name")].points;
+        points += crystals[crystal.attr("data-name")].points;
     }
 
     // Function that pops current points to the page
     function popMatchingNumber(crystal){
-        var scoreNumDiv = $("<div id = 'score-number'>").text(yourMatchingNumber);
+        var scoreNumDiv = $("<div id = 'score-number'>").text(points);
         $("#score-area").html();
         $("#score-area").html(scoreNumDiv);
     }
@@ -109,16 +109,16 @@ $(document).ready(function() {
     $(".crystals-button").on("click", function(event){
 
         // Update current point total and populate on page
-        updateMatchingNumber($(this));
+        updatePoints($(this));
         popMatchingNumber();
 
         // Checks if user won or lost
-        if (yourMatchingNumber === randomNum){
+        if (points === randomNum){
             wins++;
             reset();
             updateHtml(true);
         }
-        else if (yourMatchingNumber > randomNum){
+        else if (points > randomNum){
             losses++;
             reset();
             updateHtml(false);
