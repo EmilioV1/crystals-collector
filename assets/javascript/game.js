@@ -105,6 +105,23 @@ $(document).ready(function() {
     popCrystals();
     popMatchingNumber();
 
-    
-    
+    // Click event created for crystals
+    $(".crystals-button").on("click", function(event){
+
+        // Update current point total and populate on page
+        updateMatchingNumber($(this));
+        popMatchingNumber();
+
+        // Checks if user won or lost
+        if (yourMatchingNumber === randomNum){
+            wins++;
+            reset();
+            updateHtml(true);
+        }
+        else if (yourMatchingNumber > randomNum){
+            losses++;
+            reset();
+            updateHtml(false);
+        }
+    });  
 });
