@@ -18,7 +18,7 @@ $(document).ready(function() {
     };
 
     // Generate random value for each crystal and pops image
-    function randomNumCrystals(){
+    function randomNumCrystal(){
         return {
             one:{
                 crystalValue: Math.floor(Math.random() * 12) + 1,
