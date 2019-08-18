@@ -60,7 +60,7 @@ $(document).ready(function() {
         else if(win === false){
             $(".win-area").append("<p>").text("you lose!");
             reset();
-            renderMatchingNumber();
+            popMatchingNumber();
         }
 
         // Appends scoreboard to the page
@@ -76,4 +76,16 @@ $(document).ready(function() {
         $("#win-area").append(pWins);
         $("#win-area").append(pLosses);
     }
+
+    // Function to pop crystals to page
+    function popCrystals(){
+        for (var key in crystals){
+            var crystalDiv = $("<div class = 'crystals-button' data-name = '" + key + "'>");
+            var crystalImg = $("<img alt = 'image' class = 'crystal-img'>").attr("src", crystals[key].imageUrl);
+            crystalDiv.append(crystalImg);
+            $("#crystal-area").append(crystalDiv);
+        }
+    }
+
+    
 });
