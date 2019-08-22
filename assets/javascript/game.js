@@ -73,8 +73,8 @@ $(document).ready(function() {
         pWins.append(wSpan);
         pLosses.append(lSpan);
 
-        $("#win-area").append(pWins);
-        $("#win-area").append(pLosses);
+        $(".win-area").append(pWins);
+        $(".win-area").append(pLosses);
     }
 
     // Function to pop crystals to page
@@ -96,8 +96,8 @@ $(document).ready(function() {
     // Function that pops current points to the page
     function popMatchingNumber(crystal){
         var scoreNumDiv = $("<div id = 'score-number'>").text(points);
-        $("#score-area").html();
-        $("#score-area").html(scoreNumDiv);
+        $(".score-area").html();
+        $(".score-area").html(scoreNumDiv);
     }
 
     // Calling functions to start game
