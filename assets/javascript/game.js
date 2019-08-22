@@ -83,7 +83,8 @@ $(document).ready(function() {
             var crystalDiv = $("<div class = 'crystals-button' data-name = '" + key + "'>");
             var crystalImg = $("<img alt = 'image' class = 'crystal-img'>").attr("src", crystals[key].imageUrl);
             crystalDiv.append(crystalImg);
-            $("#crystal-area").append(crystalDiv);
+            $(".crystal-area").append(crystalDiv);
+            console.log("Function popCrystals has run!")
         }
     }
     // Function to update total points as crystals are clicked
