@@ -80,10 +80,10 @@ $(document).ready(function() {
     // Function to pop crystals to page
     function popCrystals(){
         for (var key in crystals){
-            var crystalDiv = $("<div class = 'crystals-button' data-name = '" + key + "'>");
+            var crystalSpan = $("<span class = 'crystals-button' data-name = '" + key + "'>");
             var crystalImg = $("<img alt = 'image' class = 'crystal-img'>").attr("src", crystals[key].imageUrl);
-            crystalDiv.append(crystalImg);
-            $(".crystal-area").append(crystalDiv);
+            crystalSpan.append(crystalImg);
+            $(".crystal-area").append(crystalSpan);
             console.log("Function popCrystals has run!")
         }
     }
