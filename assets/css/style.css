@@ -1,4 +1,19 @@
 .crystal-img{
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
+    border-radius: 60%;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.523);
+    margin: 5px;
+}
+
+.container{
+    align-content: center;
+}
+.score-area{
+    font-size: 50px;
+    position: relative;
+}
+p{
+    font-size: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
