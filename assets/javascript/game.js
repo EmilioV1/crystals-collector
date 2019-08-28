@@ -1,22 +1,17 @@
 // Launches code once DOM has loaded
 $(document).ready(function() {
 
+    // Total points 
+    var points = 0;
+    
+    // Target number
+    var randomNum = randomNumGen();
+
     // Starting variables
     var wins = 0;
     var losses = 0;
     var crystals;
-
-    // Total points 
-    var points = 0;
-
-    // Target number
-    var randomNum = randomNumGen();
-
-    // Generates random objective number
-    function randomNumGen(){
-        return Math.floor(Math.random() * 102) + 19;
-    };
-
+    
     // Generate random value for each crystal and pops image
     function randomNumCrystal(){
         return {
@@ -37,6 +32,11 @@ $(document).ready(function() {
                 imageUrl: "assets/images/four.png"
             },
         };
+    }
+    console.log(randomNumCrystal);
+    // Generates random objective number
+    function randomNumGen(){
+        return Math.floor(Math.random() * 102) + 19;
     }
 
     // Resets game
@@ -90,14 +90,16 @@ $(document).ready(function() {
     // Function to update total points as crystals are clicked
     function updatePoints(crystal){
         // Updates the point total based on which crystal was clicked
-        points += crystals[crystal.attr("data-name")].points;
+        points += crystals[crystal.attr('data-name')].crystalValue;
     }
 
     // Function that pops current points to the page
-    function popMatchingNumber(crystal){
+    function popMatchingNumber(){
+        console.log(points)
         var scoreNumDiv = $("<div id = 'score-number'>").text(points);
-        $(".score-area").html();
-        $(".score-area").html(scoreNumDiv);
+        $(".score-area").html("");
+        $(".score-area").append(scoreNumDiv);
+        console.log(scoreNumDiv);
     }
 
     // Calling functions to start game
@@ -107,7 +109,7 @@ $(document).ready(function() {
     popMatchingNumber();
 
     // Click event created for crystals
-    $(".crystals-button").on("click", function(event){
+    $(".crystals-button").on("click", function(){
 
         // Update current point total and populate on page
         updatePoints($(this));
